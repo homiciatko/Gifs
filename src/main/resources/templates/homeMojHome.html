@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>  <!--// trzeba domknac taga, zeby dziala w thyMyLeaf bo html5 nie wymaga domkniec -->
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/app.css}"/>  <!-- korzystajac z TML mamy sciezke względną -->
+</head>
+<body>
+<h1> Hello world!</h1>
+<p>Jestem homikiem :)</p>
+<!-- Treść komentarza -->
+<img th:src="@{/gifs/ludzik.gif}" alt="ludzik gif" />
+<img src="/gifs/ludzik.gif"/>
+</body>
+</html>
