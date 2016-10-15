@@ -1,9 +1,10 @@
 package pl.homik.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import pl.homik.data.GifRepository;
 import pl.homik.model.Gif;
 
 /**
@@ -14,6 +15,11 @@ import pl.homik.model.Gif;
 
 @Controller
 public class GifController {
+
+//    w tym wypadku, Bin sobie konfiguruje i utworzy nam zmienna gifRepository kiedy będzie jej potrzebował
+    @Autowired
+    private GifRepository gifRepository;
+
 
     @RequestMapping("/")  //ustawiamy sciezke responsa, tutaj jest glowny 'katalog'
 //    @ResponseBody   // chcemy zwrocic jako stringa a nie jako stronę internetową
@@ -26,7 +32,8 @@ public class GifController {
 
 //        wzorzec MVC
 
-        Gif gif = new Gif("compiler-bot", "gifHomika", true);
+//        Gif gif = new Gif("compiler-bot", "gifHomika", true);
+        Gif gif = gifRepository.findByName("compiler-bot");
         modelMap.put("gif", gif);
 
         return "gif-details";
