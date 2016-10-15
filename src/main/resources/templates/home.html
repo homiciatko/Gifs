@@ -48,7 +48,9 @@
             <div th:each ="gif : ${gifs}" class="col s12 l4">
                 <a th:href="@{'gif/' + ${gif.name}}">
                     <img th:src="@{'/gifs/' + ${gif.name} + '.gif'}"/>
+
                 </a>
+                <a href="#" th:class="(${gif.favorite}? 'un' : '') + 'mark favorite'"></a>
             </div>
         </div>
     </div>
