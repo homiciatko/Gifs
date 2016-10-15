@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.homik.data.GifRepository;
 import pl.homik.model.Gif;
 
+import java.util.List;
+
 /**
  * Created by Pawel on 2016-10-15.
  */
@@ -24,7 +26,10 @@ public class GifController {
 
     @RequestMapping("/")  //ustawiamy sciezke responsa, tutaj jest glowny 'katalog'
 //    @ResponseBody   // chcemy zwrocic jako stringa a nie jako stronę internetową
-    public String listGifts() {
+    public String listGifts(ModelMap modelMap) {
+        List<Gif> gifs = gifRepository.getAllGifs();
+        modelMap.put("gifs", gifs);
+
         return "home";
     }
 
@@ -32,7 +37,6 @@ public class GifController {
     public String gifDetails(ModelMap modelMap) {
 
 //        wzorzec MVC
-
 //        Gif gif = new Gif("compiler-bot", "gifHomika", true);
         Gif gif = gifRepository.findByName("compiler-bot");
         modelMap.put("gif", gif);
