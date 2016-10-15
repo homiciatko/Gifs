@@ -15,13 +15,13 @@ import java.util.List;
 @Component
 public class GifRepository {
     private static final List<Gif> ALL_GIFS = Arrays.asList(
-            new Gif("android-explosion", "pawel", false),
-            new Gif("ben-and-mike", "ola", true),
-            new Gif("book-dominos", "ania", false),
-            new Gif("compiler-bot", "monika", true),
-            new Gif("cowboy-coder", "paulina", false),
-            new Gif("infinite-andrew", "justyna", true),
-            new Gif("ludzik", "wojtek", false)
+            new Gif("android-explosion", "pawel", false,1),
+            new Gif("ben-and-mike", "ola", true, 2),
+            new Gif("book-dominos", "ania", false, 3),
+            new Gif("compiler-bot", "monika", true, 1),
+            new Gif("cowboy-coder", "paulina", false, 2),
+            new Gif("infinite-andrew", "justyna", true, 3),
+            new Gif("ludzik", "wojtek", false, 1)
 
     );
 

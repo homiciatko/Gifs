@@ -59,7 +59,6 @@ public class GifController {
         List<Gif> gifs = gifRepository.getFavorites();
         modelMap.put("gifs", gifs);
 
-
         return "favorites";
     }
 }

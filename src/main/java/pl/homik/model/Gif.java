@@ -11,10 +11,20 @@ public class Gif {
 
     private boolean favorite;
 
-    public Gif(String gifFilename, String gifOwnerName, boolean favorite) {
+    private int categoryId;
+
+    public Gif(String gifFilename, String gifOwnerName, boolean favorite, int categoryId) {
         this.name = gifFilename;
         this.username = gifOwnerName;
         this.favorite = favorite;
+        this.categoryId = categoryId;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getName() {
