@@ -3,6 +3,7 @@ package pl.homik.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.homik.data.GifRepository;
 import pl.homik.model.Gif;
@@ -34,6 +35,16 @@ public class GifController {
 
 //        Gif gif = new Gif("compiler-bot", "gifHomika", true);
         Gif gif = gifRepository.findByName("compiler-bot");
+        modelMap.put("gif", gif);
+
+        return "gif-details";
+    }
+
+    @RequestMapping("/gif/{name}")
+//    @PathVariable musi byc by name z argumentu przeniesc do findByName
+    public String gifDetails2(@PathVariable String name , ModelMap modelMap) {
+
+        Gif gif = gifRepository.findByName(name);
         modelMap.put("gif", gif);
 
         return "gif-details";
