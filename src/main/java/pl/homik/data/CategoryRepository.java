@@ -24,12 +24,12 @@ public class CategoryRepository {
         return ALL_CATEGORIES;
     }
 //    Spring Data moze to nam wygenerować za darmo
-    public Category findById(int id) {
+
+    public static Category findById(int id) {
         for (Category category : ALL_CATEGORIES) {
             if ( category.getId() == id)
                 return category;
         }
-
         return null;
     }
 }

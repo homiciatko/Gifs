@@ -48,4 +48,15 @@ public class GifRepository {
         return gifs;
     }
 
+
+    public List<Gif> getGifsByCategoryId(int id) {
+        List<Gif> gifs = new ArrayList<Gif>();
+        for (Gif gif : ALL_GIFS) {
+            if(gif.getCategoryId() == id)
+                gifs.add(gif);
+        }
+
+        return gifs;
+    }
+
 }

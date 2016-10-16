@@ -6,6 +6,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.homik.data.GifRepository;
+import pl.homik.data.CategoryRepository;
+import pl.homik.model.Category;
 import pl.homik.model.Gif;
 
 import java.util.List;
@@ -49,7 +51,9 @@ public class GifController {
     public String gifDetails2(@PathVariable String name , ModelMap modelMap) {
 
         Gif gif = gifRepository.findByName(name);
+        Category category = CategoryRepository.findById(gif.getCategoryId());
         modelMap.put("gif", gif);
+        modelMap.put("category", category);
 
         return "gif-details";
     }
@@ -60,5 +64,16 @@ public class GifController {
         modelMap.put("gifs", gifs);
 
         return "favorites";
+    }
+
+    @RequestMapping("/category/{id}")
+    public String getByCategories(ModelMap modelMap,@PathVariable int id) {
+        List<Gif> gifs = gifRepository.getGifsByCategoryId(id);
+        Category category = CategoryRepository.findById(id);  // <- dlaczego tutaj nie mogę użyc categoryRepository?
+
+        modelMap.put("gifs", gifs);
+        modelMap.put("category", category);
+
+        return "category";
     }
 }
